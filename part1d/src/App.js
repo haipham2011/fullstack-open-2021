@@ -12,7 +12,7 @@ const Button = ({text, handleClick}) => (
   </button>
 )
 
-const Feedback = ({ text, number }) => <p>{text} {number}</p>
+const Statistic = ({ text, value }) => <p>{text} {value}</p>
 
 const Statistics = ({ good, neutral, bad }) => {
 
@@ -33,12 +33,12 @@ const Statistics = ({ good, neutral, bad }) => {
       <Header text="statistics" />
       {total !== 0 ? (
         <div>
-        <Feedback text="good" number={good} />
-        <Feedback text="neutral" number={neutral} />
-        <Feedback text="bad" number={bad} />
-        <Feedback text="all" number={total} />
-        <Feedback text="average" number={average} />
-        <Feedback text="positive" number={percentage(good, factor.good)} />
+        <Statistic text="good" value={good} />
+        <Statistic text="neutral" value={neutral} />
+        <Statistic text="bad" value={bad} />
+        <Statistic text="all" value={total} />
+        <Statistic text="average" value={average} />
+        <Statistic text="positive" value={percentage(good, factor.good)} />
       </div>
       ) : (
         <div>No feedback given</div>
