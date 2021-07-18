@@ -30,14 +30,28 @@ const App = () => {
     setVotes(newVotes);
   }
 
+  const handleMax = () => {
+    let max = 0;
+    votes.forEach((vote, index) => {
+      if(vote > votes[max]){
+        max = index;
+      }
+    });
+    return max;
+  }
+
   return (
     <div>
+      <h1>Anecdotes of the day</h1>
       {anecdotes[selected]} <br/>
       has {votes[selected]} votes
       <div>
         <button onClick={handleVotes}>vote</button>
         <button onClick={handleClick}>next anecdotes</button>
       </div>
+      <h1>Anecdotes with most votes</h1>
+      {anecdotes[handleMax()]} <br/>
+      has {votes[handleMax()]} votes
     </div>
   )
 }
