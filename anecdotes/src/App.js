@@ -12,6 +12,7 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState([0, 0, 0, 0, 0, 0, 0])
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -20,13 +21,21 @@ const App = () => {
 }
 
   const handleClick = () => {
-    setSelected(getRandomInt(0, anecdotes.length-1))
+    setSelected(getRandomInt(0, anecdotes.length-1));
+  }
+
+  const handleVotes = () => {
+    const newVotes = [...votes];
+    newVotes[selected] += 1;
+    setVotes(newVotes);
   }
 
   return (
     <div>
-      {anecdotes[selected]}
+      {anecdotes[selected]} <br/>
+      has {votes[selected]} votes
       <div>
+        <button onClick={handleVotes}>vote</button>
         <button onClick={handleClick}>next anecdotes</button>
       </div>
     </div>
