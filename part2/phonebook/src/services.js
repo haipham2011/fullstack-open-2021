@@ -1,13 +1,15 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/persons'
+const baseUrl = '/api/persons'
 
 const getAll = () => {
-  return axios.get(baseUrl)
+  const request = axios.get(baseUrl)
+  return request.then(response => response.data)
 }
 
 const createPerson = person => {
-  return axios.post(baseUrl, person)
+  const request = axios.post(baseUrl, person)
+  return request.then(response => response.data)
 }
 
 const deletePerson = id => {
@@ -15,13 +17,14 @@ const deletePerson = id => {
 }
 
 const updatePerson = person => {
-  return axios.put(`${baseUrl}/${person.id}`, person)
+  const request = axios.put(`${baseUrl}/${person.id}`, person)
+  return request.then(response => response.data)
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default { 
-  getAll: getAll, 
-  createPerson: createPerson, 
-  deletePerson: deletePerson,
-  updatePerson: updatePerson
+  getAll, 
+  createPerson, 
+  deletePerson,
+  updatePerson
 }

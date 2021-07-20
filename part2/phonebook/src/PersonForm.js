@@ -1,9 +1,12 @@
 import React from 'react'
 
-const PersonForm = ({ newName, newNumber, setNewName, setNewNumber, handleSubmit }) =>
+const PersonForm = ({ newName, newNumber, setNewName, setNewNumber, handleSubmit, setMessage, setNotification }) =>
   <form>
     <div>
-      name: <input onChange={event => setNewName(event.target.value)} value={newName} />
+      name: <input onChange={event => setNewName(event.target.value)} value={newName} onFocus={() => {
+        setNotification('')
+        setMessage('')
+      }}/>
     </div>
     <div>
       number: <input onChange={event => setNewNumber(event.target.value)} value={newNumber} />
